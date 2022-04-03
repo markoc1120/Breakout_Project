@@ -1,4 +1,3 @@
-import time
 from turtle import Turtle
 import random
 
@@ -11,7 +10,6 @@ class Ball(Turtle):
         self.penup()
         self.x_move = 10
         self.y_move = 10
-        self.move_speed = 0.1
         self.sety(-200)
 
     def move(self):
@@ -24,7 +22,6 @@ class Ball(Turtle):
 
     def bounce_x(self):
         self.x_move *= -1
-        self.move_speed *= 0.9
 
     def bounce_y_paddle(self, paddle):
         self.x_move = (self.xcor() - paddle.xcor()) * 0.3
@@ -40,6 +37,5 @@ class Ball(Turtle):
     def reset_position(self):
         self.x_move = 10
         self.y_move = 10
-        self.move_speed = 0.1
         self.goto(random.randint(-350, 350), -200)
         self.bounce_x()
