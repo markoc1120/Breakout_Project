@@ -1,4 +1,5 @@
 import time
+import turtle
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
@@ -10,19 +11,22 @@ screen.bgcolor('black')
 screen.title('Breakout')
 screen.setup(800, 600)
 screen.tracer(0)
+canvas = turtle.getcanvas()
 
 paddle = Paddle(0, 50)
 ball = Ball()
 tiles = []
+canvas.bind('<Motion>', paddle.move)
 
 for i in range(10):
     for j in range(5):
         tile = Tile(355 - i * 80, 250 - j * 30)
         tiles.append(tile)
 
-screen.listen()
-screen.onkey(paddle.move_right, 'd')
-screen.onkey(paddle.move_left, 'a')
+# Solves with mouse interaction
+# screen.listen()
+# screen.onkey(paddle.move_right, 'd')
+# screen.onkey(paddle.move_left, 'a')
 
 game_is_on = True
 game_state = 1
